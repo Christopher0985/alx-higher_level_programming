@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 # 8-uppercase.py
+
 def uppercase(s):
+    """Print a string in uppercase."""
     for char in s:
         if 'a' <= char <= 'z':
-            print("{}".format(chr(ord(char) - 32)), end="")
-        else:
-            print("{}".format(char), end="")
+            char = chr(ord(char) - 32)
+        print("{}".format(char), end="")
     print()
