@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 # 100-print_tebahpla.py
 
-for char in range(122, 96, -1):
-    print("{}".format(chr(char)), end="")
-    char -= 32
-    if char >= 97:
-        print("{}".format(chr(char)), end="")
+"""Print the alphabet in reverse order, alternating uppercase and lowercase."""
+toggle = 0
+for char_code in range(ord('z'), ord('a') - 1, -1):
+    print("{}".format(chr(char_code - toggle)), end="")
+    toggle = 32 if toggle == 0 else 0
