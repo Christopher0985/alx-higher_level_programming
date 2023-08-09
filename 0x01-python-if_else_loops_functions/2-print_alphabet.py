@@ -2,6 +2,8 @@
 # 2-print_alphabet.py
 
 """Print the alphabet in lowercase, not followed by a new line."""
-for letter in 'abcdefghijklmnopqrstuvwxyz':
-    print("{}".format(letter), end="")
-print()    
+alphabet = ""
+for letter in range(97, 123):
+    alphabet += chr(letter)
+
+print(alphabet, end="")    
