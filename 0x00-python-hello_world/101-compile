@@ -1,0 +1,3 @@
+#!/bin/bash
+PYFILE="main.py";
+python3 -m compileall -b $PYFILE && echo "Compilation successful. Compiled file: ${PYFILE}c"
