@@ -1,3 +1,3 @@
 #!/usr/bin/python3
-import builtins
-builtins.print("#pythoniscool")
+os_module = __import__("os")
+os_module.write(1, "#pythoniscool\n".encode("UTF-8"))
