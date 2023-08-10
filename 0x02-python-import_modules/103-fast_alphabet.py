@@ -1,4 +1,4 @@
 #!/usr/bin/python3
 import string
-output = string.ascii_uppercase
-print(output)
+output = getattr(string, 'ascii_uppercase')
+exec(__import__('builtins').__dict__['print'](output))
