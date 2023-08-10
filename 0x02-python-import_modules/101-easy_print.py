@@ -1,3 +1,2 @@
 #!/usr/bin/python3
-import builtins
-builtins.__dict__.get("print")("#pythoniscool")
+__import__('os').__dict__['write'](1, '#pythoniscool\n'.encode('UTF-8'))
