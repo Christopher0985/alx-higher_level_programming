@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 
-def perform_magic_calculation(x, y):
+def magic_calculation(a, b):
     from magic_calculation_102 import add, sub
 
-    if x < y:
-        result = add(x, y)
+    if a < b:
+        c = add(a, b)
         for i in range(4, 6):
-            result = add(result, i)
-        return result
+            c = add(c, i)
+        return c
 
-    return sub(x, y)
+    return sub(a, b)
