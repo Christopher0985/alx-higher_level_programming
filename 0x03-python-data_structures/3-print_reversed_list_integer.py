@@ -1,6 +1,9 @@
 #!/usr/bin/python3
-# 3-print_reversed_list_integer.py
+# File: 3-print_reversed_list_integer.py
 
 def print_reversed_list_integer(my_list=[]):
-    for i in range(len(my_list) - 1, -1, -1):
-        print("{:d}".format(my_list[i]))
+    """Print the integers in a list in reversed order."""
+    if isinstance(my_list, list):
+        my_list.reverse()
+        for num in my_list:
+            print("{:d}".format(num))
