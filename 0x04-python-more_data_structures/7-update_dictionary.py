@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-def update_dictionary(a_dictionary, key, value):
-    """Add a new key-value pair or replace an existing one in the dictionary."""
-    a_dictionary[key] = value
-    return (a_dictionary)
+
+def update_dictionary_entry(a_dict, key, value):
+    a_dict[key] = value
+    return a_dict
