@@ -2,8 +2,7 @@
 import sys
 
 def safe_print_integer_err(value):
-    """
-    This function prints an integer using the format "{:d}".
+    """This function prints an integer with "{:d}".format().
 
 If a ValueError is raised, an appropriate error message is
 printed to the standard error.
@@ -19,6 +18,5 @@ printed to the standard error.
         print("{:d}".format(value))
         return True
     except (TypeError, ValueError):
-        error_message = "Exception: {}".format(sys.exc_info()[1])
-        print(error_message, file=sys.stderr)
+        print("Exception: {}".format(sys.exc_info()[1]), file=sys.stderr)
         return False
