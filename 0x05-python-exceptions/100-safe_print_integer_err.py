@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 import sys
 
 def safe_print_integer_err(value):
@@ -11,8 +12,8 @@ printed to the standard error.
         value (int): The integer to be printed.
 
     Returns:
-        Returns True if the integer was successfully printed,
-        and False if a TypeError or ValueError occurred.
+        If a TypeError or ValueError occurs - False.
+        Otherwise - True
     """
     try:
         print("{:d}".format(value))
