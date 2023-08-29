@@ -1,50 +1,59 @@
 #!/usr/bin/python3
+"""Definition of the Square class."""
 
-class Node:
-    def __init__(self, data, next_node=None):
-        self.data = data
-        self.next_node = next_node
-    
+
+class Square:
+    """Representation of a square."""
+
+    def __init__(self, size=0, position=(0, 0)):
+        """Initialize a new square.
+
+        Args:
+            size (int): The size of the new square.
+            position (tuple): The position of the new square.
+        """
+        self.size = size
+        self.position = position
+
     @property
-    def data(self):
-        return self.__data
-    
-    @data.setter
-    def data(self, value):
+    def size(self):
+        """Retrieve the current size of the square."""
+        return self.__size
+
+    @size.setter
+    def size(self, value):
         if not isinstance(value, int):
-            raise TypeError("data must be an integer")
-        self.__data = value
-    
-    @property
-    def next_node(self):
-        return self.__next_node
-    
-    @next_node.setter
-    def next_node(self, value):
-        if value is not None and not isinstance(value, Node):
-            raise TypeError("next_node must be a Node object")
-        self.__next_node = value
+            raise TypeError("Size must be an integer")
+        elif value < 0:
+            raise ValueError("Size must be non-negative")
+        self.__size = value
 
-class SinglyLinkedList:
-    def __init__(self):
-        self.head = None
-    
-    def sorted_insert(self, value):
-        new_node = Node(value)
-        if self.head is None or self.head.data >= value:
-            new_node.next_node = self.head
-            self.head = new_node
+    @property
+    def position(self):
+        """Retrieve the current position of the square."""
+        return self.__position
+
+    @position.setter
+    def position(self, value):
+        if (not isinstance(value, tuple) or
+                len(value) != 2 or
+                not all(isinstance(num, int) for num in value) or
+                not all(num >= 0 for num in value)):
+            raise TypeError("Position must be a tuple of 2 positive integers")
+        self.__position = value
+
+    def area(self):
+        """Calculate and return the current area of the square."""
+        return self.__size * self.__size
+
+    def my_print(self):
+        """Print the square using the # character and position."""
+        if self.__size == 0:
+            print()
             return
-        current = self.head
-        while current.next_node is not None and current.next_node.data < value:
-            current = current.next_node
-        new_node.next_node = current.next_node
-        current.next_node = new_node
-    
-    def __str__(self):
-        result = ""
-        current = self.head
-        while current:
-            result += str(current.data) + "\n"
-            current = current.next_node
-        return result[:-1]
+
+        for _ in range(self.__position[1]):
+            print()
+        for _ in range(self.__size):
+            print(" " * self.__position[0], end="")
+            print("#" * self.__size)
