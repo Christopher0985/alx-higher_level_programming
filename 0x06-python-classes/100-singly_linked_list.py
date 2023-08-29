@@ -1,59 +1,79 @@
 #!/usr/bin/python3
-"""Definition of the Square class."""
+"""Define classes for a singly-linked list."""
 
 
-class Square:
-    """Representation of a square."""
+class Node:
+    """Represent class a node in a singly-linked list."""
 
-    def __init__(self, size=0, position=(0, 0)):
-        """Initialize a new square.
+    def __init__(self, data, next_node=None):
+        """Initialize a new class Node.
 
         Args:
-            size (int): The size of the new square.
-            position (tuple): The position of the new square.
+            data (int): The data of the new class Node.
+            next_node (Node): The next node of the new Node.
         """
-        self.size = size
-        self.position = position
+        self.data = data
+        self.next_node = next_node
 
     @property
-    def size(self):
-        """Retrieve the current size of the square."""
-        return self.__size
+    def data(self):
+        """Get the data of the Node."""
+        return (self.__data)
 
-    @size.setter
-    def size(self, value):
+    @data.setter
+    def data(self, value):
         if not isinstance(value, int):
-            raise TypeError("Size must be an integer")
-        elif value < 0:
-            raise ValueError("Size must be non-negative")
-        self.__size = value
+            raise TypeError("data must be an integer")
+        self.__data = value
 
     @property
-    def position(self):
-        """Retrieve the current position of the square."""
-        return self.__position
+    def next_node(self):
+        """Set the next_node of the Node."""
+        return (self.__next_node)
 
-    @position.setter
-    def position(self, value):
-        if (not isinstance(value, tuple) or
-                len(value) != 2 or
-                not all(isinstance(num, int) for num in value) or
-                not all(num >= 0 for num in value)):
-            raise TypeError("Position must be a tuple of 2 positive integers")
-        self.__position = value
+    @next_node.setter
+    def next_node(self, value):
+        if not isinstance(value, Node) and value is not None:
+            raise TypeError("next_node must be a Node object")
+        self.__next_node = value
 
-    def area(self):
-        """Calculate and return the current area of the square."""
-        return self.__size * self.__size
 
-    def my_print(self):
-        """Print the square using the # character and position."""
-        if self.__size == 0:
-            print()
-            return
+class SinglyLinkedList:
+    """Represent a singly-linked list."""
 
-        for _ in range(self.__position[1]):
-            print()
-        for _ in range(self.__size):
-            print(" " * self.__position[0], end="")
-            print("#" * self.__size)
+    def __init__(self):
+        """Start a new SinglyLinkedList."""
+        self.__head = None
+
+    def sorted_insert(self, value):
+        """Insert a new class Node to the SinglyLinkedList.
+
+        The class node is inserted into the list at the correct
+        numerical position.
+
+        Args:
+            value (Node): The new Node to insert.
+        """
+        new = Node(value)
+        if self.__head is None:
+            new.next_node = None
+            self.__head = new
+        elif self.__head.data > value:
+            new.next_node = self.__head
+            self.__head = new
+        else:
+            tmp = self.__head
+            while (tmp.next_node is not None and
+                    tmp.next_node.data < value):
+                tmp = tmp.next_node
+            new.next_node = tmp.next_node
+            tmp.next_node = new
+
+    def __str__(self):
+        """Define the print() illustration of a SinglyLinkedList."""
+        values = []
+        tmp = self.__head
+        while tmp is not None:
+            values.append(str(tmp.data))
+            tmp = tmp.next_node
+        return ('\n'.join(values))
